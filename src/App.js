@@ -40,12 +40,17 @@ class App extends React.Component {
       .then(data => {this.setState({articles: data})})
       .catch(e=>{console.log(e);})
     ;
+
+    const isAuthenticated = authAPI.setup();
+    if (this.state.isAuthenticated !== isAuthenticated) {
+      this.setState({isAuthenticated: isAuthenticated})
+    }
   }
 
   render() {
     return (
       <BrowserRouter >
-        <Navbar/>
+        <Navbar isAuthenticated={this.state.isAuthenticated} setIsAuthenticated={this.setIsAuthenticated.bind(this)}/>
         <main>
           <Switch>
             <Route 

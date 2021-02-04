@@ -20,6 +20,7 @@ const LoginPage = (props) => {
         try {
             await authAPI.login(credentials);
             setHasError(false);
+            props.setIsAuthenticated(true);
         
         } catch(e) {
             console.log(e.response);

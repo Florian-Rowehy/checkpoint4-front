@@ -4,7 +4,10 @@ import authAPI from "../Service/authAPI";
 
 const Navbar = (props) => {
 
-  const logoutClickHandler=()=>{authAPI.logout()};
+  const logoutClickHandler=()=>{
+    authAPI.logout();
+    props.setIsAuthenticated(false);
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -24,18 +27,30 @@ const Navbar = (props) => {
           <li className="nav-ite">
             <NavLink className="nav-link" to="/kids">Kids</NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/login">Login</NavLink>
-          </li>
-          <li className="nav-item">
-            <button className="nav-link btn btn-danger" onClick={logoutClickHandler}>Logout</button>
-          </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
           <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
+      <ul className="navbar-nav mr-auto">
+          {
+            props.isAuthenticated? (
+              <li className="nav-item">
+                <button className="nav-link btn btn-danger" onClick={logoutClickHandler}>Logout</button>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/inscription">Create account</NavLink>
+                </li>
+              </>
+            )
+          }
+        </ul>
     </nav>
   );
 };

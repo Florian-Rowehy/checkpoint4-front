@@ -13,8 +13,10 @@ function setup() {
         const jwtData = jwtDecode(token);
         if (jwtData.exp*1000 > (new Date()).getTime()) {
             setAxiosToken(token);
+            return true;
         } else {
             logout()
+            return false;
         }
     }
 }
