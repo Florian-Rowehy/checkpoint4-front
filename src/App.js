@@ -66,6 +66,14 @@ class App extends React.Component {
               exact path='/kids' 
               render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
             />
+            <Route 
+              exact path='/boys' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
+            <Route 
+              exact path='/girls' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
           </Switch>
         </main>
       </BrowserRouter >
