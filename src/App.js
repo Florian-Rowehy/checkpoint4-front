@@ -8,6 +8,7 @@ import authAPI from './Service/authAPI';
 import articlesAPI from './Service/articlesAPI';
 import classificationsAPI from './Service/classificationsAPI';
 import categoriesAPI from './Service/categoriesAPI';
+import ArticlePage from './Page/ArticlePage';
 
 authAPI.setup();
 
@@ -80,6 +81,10 @@ class App extends React.Component {
             <Route 
               exact path='/login' 
               render={(props)=><LoginPage setIsAuthenticated={this.setIsAuthenticated.bind(this)} {...props} />}
+            />
+            <Route 
+              path='/article/:id' 
+              render={()=><ArticlePage categories={this.state.categories} classifications={this.state.classifications} />}
             />
           </Switch>
         </main>
