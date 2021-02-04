@@ -42,7 +42,7 @@ const ArticleDisplay = (props) => {
     return (
         <div>
             <div className="row justify-content-center">
-                {articles.map((article, i)=><ArticleCard key={i} image={article.image} name={article.name} description={article.description} />)}
+                {articles.map((article, i)=><ArticleCard key={i} id={article.id} image={article.image} name={article.name} description={article.description} />)}
             </div>
             <Pagination 
                 currentPage={currentPage} 
