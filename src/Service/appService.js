@@ -2,17 +2,15 @@ import axios from 'axios';
 
 const url = "http://localhost:8000/api";
 
-function find(uri) {
-    return axios
-        .get(url+uri)
-        .then(res=>res.data)
-        .then(data=>data['hydra:member']);
-}
-
 function findBasic(uri) {
     return axios
         .get(url+uri)
         .then(res=>res.data);
+}
+
+function find(uri) {
+    return findBasic(uri)
+        .then(data=>data['hydra:member']);
 }
 
 const appService = {
