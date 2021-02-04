@@ -5,6 +5,9 @@ import Navbar from './Component/Navbar';
 import HomePage from './Page/HomePage';
 import  {BrowserRouter , Switch, Route} from 'react-router-dom';
 import LoginPage from './Page/LoginPage';
+import authAPI from './Service/authAPI';
+
+authAPI.setup();
 
 class App extends React.Component {
   state = {

@@ -1,4 +1,21 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+
+function setAxiosToken(token) {
+    axios.defaults.headers["Authorization"] = "Bearer " + token;
+}
+
+function setup() {
+    const token = window.localStorage.getItem("authToken");
+    if (token) {
+        const jwtData = jwtDecode(token);
+        if (jwtData.exp*1000 > (new Date()).getTime()) {
+            setAxiosToken(token);
+        } else {
+            logout()
+        }
+    }
+}
 
 function login(credentials) {
     return axios
@@ -7,7 +24,7 @@ function login(credentials) {
         .then(data=>{
             const token=data.token;
             window.localStorage.setItem("authToken", token);
-            axios.defaults.headers["Authorization"] = "Bearer " + token;
+            setAxiosToken(token);
             return true
         })
 }
@@ -19,7 +36,8 @@ function logout() {
 
 const auth = {
     login,
-    logout
+    logout,
+    setup,
 };
 
 export default auth;
