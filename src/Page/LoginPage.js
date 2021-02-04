@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import authAPI from '../Service/authAPI';
 
 const LoginPage = (props) => {
+    if (authAPI.setup()) props.history.replace('/');
+    
     const [credentials, setCredentials] = useState({
         username:"",
         password:""
@@ -21,6 +23,7 @@ const LoginPage = (props) => {
             await authAPI.login(credentials);
             setHasError(false);
             props.setIsAuthenticated(true);
+            props.history.replace('/');
         
         } catch(e) {
             console.log(e.response);

@@ -16,9 +16,9 @@ function setup() {
             return true;
         } else {
             logout()
-            return false;
         }
     }
+    return false;
 }
 
 function login(credentials) {

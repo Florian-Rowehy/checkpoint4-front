@@ -79,7 +79,7 @@ class App extends React.Component {
             />
             <Route 
               exact path='/login' 
-              render={()=><LoginPage setIsAuthenticated={this.setIsAuthenticated.bind(this)} />}
+              render={(props)=><LoginPage setIsAuthenticated={this.setIsAuthenticated.bind(this)} {...props} />}
             />
           </Switch>
         </main>
