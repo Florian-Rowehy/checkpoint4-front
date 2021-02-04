@@ -4,23 +4,44 @@ import axios from 'axios';
 import Navbar from './Component/Navbar';
 import HomePage from './Page/HomePage';
 import  {BrowserRouter , Switch, Route} from 'react-router-dom';
-import ItemsPage from './Page/ItemsPage';
 
 class App extends React.Component {
   state = {
     categories: [],
+    departements: [],
+    classifications: [],
+    articles: [],
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/categories')
+    const url = "http://localhost:8000/api";
+    axios.get(url+'/categories')
             .then(res => res.data['hydra:member'])
             .then(
               data => {
-                console.log(data);
                 this.setState({categories: data})
               }
               )
             .catch(e=>{console.log(e);})
+    ;
+    axios.get(url+'/article_classifications')
+            .then(res => res.data['hydra:member'])
+            .then(
+              data => {
+                this.setState({classifications: data})
+              }
+              )
+            .catch(e=>{console.log(e);})
+    ;
+    axios.get(url+'/articles')
+            .then(res => res.data['hydra:member'])
+            .then(
+              data => {
+                this.setState({articles: data})
+              }
+              )
+            .catch(e=>{console.log(e);})
+    ;
   }
 
   render() {
@@ -29,8 +50,22 @@ class App extends React.Component {
         <Navbar/>
         <main>
           <Switch>
-            <Route exact path='/' component={HomePage}/>
-            <Route exact path='/items' component={ItemsPage}/>
+            <Route 
+              exact path='/' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
+            <Route 
+              exact path='/women' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
+            <Route 
+              exact path='/men' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
+            <Route 
+              exact path='/kids' 
+              render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
           </Switch>
         </main>
       </BrowserRouter >
