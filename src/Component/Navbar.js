@@ -1,6 +1,10 @@
 import React from "react";
+import authAPI from "../Service/authAPI";
 
 const Navbar = (props) => {
+
+  const logoutClickHandler=()=>{authAPI.logout()};
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">TheBalooCompany</a>
@@ -21,6 +25,9 @@ const Navbar = (props) => {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/login">Login</a>
+          </li>
+          <li className="nav-item">
+            <button className="nav-link btn btn-danger" onClick={logoutClickHandler}>Logout</button>
           </li>
           {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>

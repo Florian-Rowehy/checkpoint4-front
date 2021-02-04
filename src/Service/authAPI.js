@@ -17,7 +17,9 @@ function logout() {
     delete axios.defaults.headers["Authorization"];
 }
 
-export default {
+const auth = {
     login,
     logout
 };
+
+export default auth;
