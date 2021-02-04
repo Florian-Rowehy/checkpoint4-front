@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const SideBar = (props) => {
     //console.log(props.classifications);
@@ -8,7 +9,7 @@ const SideBar = (props) => {
                 {props.categories.map(
                     (categorie, i)=>(
                         <li key={i} className="list-group-item">
-                            <a href={'/'+categorie.name}>{categorie.name}</a>
+                            <NavLink to={'/'+categorie.name}>{categorie.name}</NavLink>
                         </li>
                     )
                 )}
