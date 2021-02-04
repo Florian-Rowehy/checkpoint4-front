@@ -2,37 +2,37 @@ import React from "react";
 
 const Navbar = (props) => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="/">TheBalooCompany</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a className="navbar-brand" href="/">TheBalooCompany</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/women">Women</a>
+      <div className="collapse navbar-collapse" id="navbarColor01">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <a className="nav-link" href="/women">Women</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/men">Men</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/men">Men</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/kids">Kids</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/kids">Kids</a>
           </li>
-          {/* <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
+          {/* <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div className="dropdown-menu">
+              <a className="dropdown-item" href="#">Action</a>
+              <a className="dropdown-item" href="#">Another action</a>
+              <a className="dropdown-item" href="#">Something else here</a>
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="#">Separated link</a>
             </div>
           </li> */}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <form className="form-inline my-2 my-lg-0">
+          <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
+          <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
