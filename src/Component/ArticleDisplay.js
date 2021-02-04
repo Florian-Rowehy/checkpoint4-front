@@ -22,9 +22,12 @@ const ArticleDisplay = (props) => {
 
     useEffect(() => {
         const pathname = url.pathname;
+        console.log(pathname);
         const categorie = pathname.length > 1? pathname.slice(1) : null;
         let uri = "?page="+currentPage;
-        if (categorie && categorie === "kids") {
+        if (!categorie) {
+            uri+=""
+        } else if (categorie === "kids") {
             uri += "&categories.name[]=boys&categories.name[]=girls";
         } else {
             uri += "&categories.name="+categorie;
