@@ -41,7 +41,7 @@ const ArticleDisplay = (props) => {
 
     return (
         <div>
-            <div className="row">
+            <div className="row justify-content-center">
                 {articles.map((article, i)=><ArticleCard key={i} image={article.image} name={article.name} description={article.description} />)}
             </div>
             <Pagination 
