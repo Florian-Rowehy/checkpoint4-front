@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react';
-import axios from 'axios';
 import Navbar from './Component/Navbar';
 import HomePage from './Page/HomePage';
 import  {BrowserRouter , Switch, Route} from 'react-router-dom';
 import LoginPage from './Page/LoginPage';
 import authAPI from './Service/authAPI';
+import articlesAPI from './Service/articlesAPI';
+import classificationsAPI from './Service/classificationsAPI';
+import categoriesAPI from './Service/categoriesAPI';
 
 authAPI.setup();
 
@@ -15,36 +17,28 @@ class App extends React.Component {
     departements: [],
     classifications: [],
     articles: [],
+    isAuthenticated: false,
   }
 
+  setIsAuthenticated(bool) {
+    this.setState({isAuthenticated: bool});
+  }
+  
   componentDidMount() {
-    const url = "http://localhost:8000/api";
-    axios.get(url+'/categories')
-            .then(res => res.data['hydra:member'])
-            .then(
-              data => {
-                this.setState({categories: data})
-              }
-              )
-            .catch(e=>{console.log(e);})
+    categoriesAPI
+      .findAll()
+      .then(data =>{this.setState({categories: data})})
+      .catch(e=>{console.log(e);})
     ;
-    axios.get(url+'/article_classifications')
-            .then(res => res.data['hydra:member'])
-            .then(
-              data => {
-                this.setState({classifications: data})
-              }
-              )
-            .catch(e=>{console.log(e);})
+    classificationsAPI
+      .findAll()
+      .then(data => {this.setState({classifications: data})})
+      .catch(e=>{console.log(e);})
     ;
-    axios.get(url+'/articles')
-            .then(res => res.data['hydra:member'])
-            .then(
-              data => {
-                this.setState({articles: data})
-              }
-              )
-            .catch(e=>{console.log(e);})
+    articlesAPI
+      .findAll()
+      .then(data => {this.setState({articles: data})})
+      .catch(e=>{console.log(e);})
     ;
   }
 
@@ -80,7 +74,7 @@ class App extends React.Component {
             />
             <Route 
               exact path='/login' 
-              component={LoginPage} 
+              render={()=><LoginPage setIsAuthenticated={this.setIsAuthenticated.bind(this)} />}
             />
           </Switch>
         </main>

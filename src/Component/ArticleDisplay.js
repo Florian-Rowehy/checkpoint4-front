@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import axios from 'axios';
 import ArticleCard from './ArticleCard';
 import Pagination from './Pagination';
+import appService from '../Service/appService';
 
 const ArticleDisplay = (props) => {
     const [articles, setArticles] = useState([]);
@@ -23,7 +24,7 @@ const ArticleDisplay = (props) => {
     useEffect(() => {
         const pathname = url.pathname;
         const categorie = pathname.length > 1? pathname.slice(1) : null;
-        let uri = "?page="+currentPage;
+        let uri = "/articles?page="+currentPage;
         if (!categorie) {
             uri+=""
         } else if (categorie === "kids") {
@@ -31,9 +32,7 @@ const ArticleDisplay = (props) => {
         } else {
             uri += "&categories.name="+categorie;
         }
-        const query = "http://localhost:8000/api/articles" + uri;
-        axios.get(query)
-             .then(res => res.data)
+        appService.findBasic(uri)
              .then(data => {
                  setNbPages(Math.ceil(data['hydra:totalItems']/15));
                  setArticles(data['hydra:member']);

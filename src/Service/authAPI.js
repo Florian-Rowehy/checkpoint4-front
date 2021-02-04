@@ -1,6 +1,8 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
+const url = "http://localhost:8000/api";
+
 function setAxiosToken(token) {
     axios.defaults.headers["Authorization"] = "Bearer " + token;
 }
@@ -19,7 +21,7 @@ function setup() {
 
 function login(credentials) {
     return axios
-        .post("http://localhost:8000/api/login_check", credentials)
+        .post(url+"/login_check", credentials)
         .then(res => res.data)
         .then(data=>{
             const token=data.token;
