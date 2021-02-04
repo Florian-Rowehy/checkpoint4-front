@@ -2,7 +2,6 @@ import React from 'react';
 
 const Pagination = (props) => {
     const pagination = [];
-    console.log(props)
     for (let index = 1; index <= props.nbPages; index++) {
         pagination[pagination.length] = (
             <li key={index} className={"page-item " + (props.currentPage === index && "active")}>
