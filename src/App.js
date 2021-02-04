@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from './Component/Navbar';
 import HomePage from './Page/HomePage';
 import  {BrowserRouter , Switch, Route} from 'react-router-dom';
+import LoginPage from './Page/LoginPage';
 
 class App extends React.Component {
   state = {
@@ -73,6 +74,10 @@ class App extends React.Component {
             <Route 
               exact path='/girls' 
               render={()=><HomePage categories={this.state.categories} classifications={this.state.classifications} />}
+            />
+            <Route 
+              exact path='/login' 
+              component={LoginPage} 
             />
           </Switch>
         </main>

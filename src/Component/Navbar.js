@@ -16,8 +16,11 @@ const Navbar = (props) => {
           <li className="nav-item">
             <a className="nav-link" href="/men">Men</a>
           </li>
-          <li className="nav-item">
+          <li className="nav-ite">
             <a className="nav-link" href="/kids">Kids</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/login">Login</a>
           </li>
           {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
