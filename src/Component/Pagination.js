@@ -13,13 +13,13 @@ const Pagination = (props) => {
     return (
     <div>
         <ul className="pagination justify-content-center">
-            <li className={"page-item" + (props.currentPage <= 1 && "disabled")}>
+            <li className={"page-item " + (props.currentPage <= 1 && "disabled")}>
                 <button className="page-link" onClick={props.prevPageClickHandler} >&laquo;</button>
             </li>
             {
                 pagination
             }
-            <li className={"page-item" + (props.currentPage >= props.nbPages && "disabled")}>
+            <li className={"page-item " + (props.currentPage >= props.nbPages && "disabled")}>
                 <button className="page-link" onClick={props.nextPageClickHandler}>&raquo;</button>
             </li>
         </ul>
