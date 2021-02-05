@@ -60,7 +60,6 @@ const LoginPage = (props) => {
                 </p>
             </form>
         </>
-
     );
 }
 

@@ -7,7 +7,7 @@ const ArticlePage = (props) => {
     return (
         <div className="d-flex">
             <SideBar categories={props.categories} classifications={props.classifications}/>
-            <Article />
+            <Article history={props.history}/>
         </div>
     )
 }
