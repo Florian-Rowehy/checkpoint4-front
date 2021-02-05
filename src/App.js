@@ -9,6 +9,7 @@ import articlesAPI from './Service/articlesAPI';
 import classificationsAPI from './Service/classificationsAPI';
 import categoriesAPI from './Service/categoriesAPI';
 import ArticlePage from './Page/ArticlePage';
+import CartPage from './Page/CartPage';
 
 authAPI.setup();
 
@@ -84,8 +85,9 @@ class App extends React.Component {
             />
             <Route 
               path='/article/:id' 
-              render={()=><ArticlePage categories={this.state.categories} classifications={this.state.classifications} />}
+              render={(props)=><ArticlePage categories={this.state.categories} classifications={this.state.classifications} {...props} />}
             />
+            <Route exact path='/cart'><CartPage/></Route>
           </Switch>
         </main>
       </BrowserRouter >
